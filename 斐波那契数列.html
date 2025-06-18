@@ -723,11 +723,12 @@ if (reversed == null) { reversed = false; }
 	props.loop = loop;
 	props.reversed = reversed;
 	cjs.MovieClip.apply(this,[props]);
-	this.actionFrames = [0,18,38,79,108,128,169,198,218,259,288,308,354,399,428,474,519,564,593,613,659,709,754,783,803,844,873,893,939,984,1013,1059,1109,1184];
+	this.actionFrames = [0,18,19,38,39,79,80,108,109,128,169,198,218,259,288,308,354,399,428,474,519,564,593,613,659,709,754,783,803,844,873,893,939,984,1013,1059,1109,1199];
 	// timeline functions:
 	this.frame_0 = function() {
 		this.stop();
 		this.isOnestep = 0;
+		this.lastFrame = 1;
 		this.btnstop.alpha = 0.5;
 		this.btnplay.alpha = 1;
 		this.btnonestep.alpha = 1;
@@ -763,25 +764,27 @@ if (reversed == null) { reversed = false; }
 		// 重播按钮点击事件
 		this.btnreplay.addEventListener("click", replaymove.bind(this));
 		function replaymove() {
-			this.btnplay.alpha=1;
-			this.btnstop.alpha=0.5;
-		    this.gotoAndStop(0);
+		    this.gotoAndStop(1);
+			this.btnstop.alpha = 0.5;
+			this.btnplay.alpha = 1;
+			this.btnonestep.alpha = 1;
 		}
 		// 回退按钮
 		this.btnback.addEventListener("click", backmove.bind(this));
 		function backmove() {
 			this.stop();
-			if (this.currentFrame !== 0) {
 				isOnestep = 1;
 				this.gotoAndStop(this.lastFrame - 1);
-			}
 		}
 	}
 	this.frame_18 = function() {
 		if(isOnestep) {
 			this.stop();
-			this.lastFrame = 1;
+			this.lastFrame = 2;
 		}
+	}
+	this.frame_19 = function() {
+		this.lastFrame = 19;
 	}
 	this.frame_38 = function() {
 		if(isOnestep) {
@@ -789,17 +792,26 @@ if (reversed == null) { reversed = false; }
 			this.lastFrame = 19;
 		}
 	}
+	this.frame_39 = function() {
+		this.lastFrame = 39;
+	}
 	this.frame_79 = function() {
 		if(isOnestep) {
-			this.stop();
 			this.lastFrame = 39;
+			this.stop();
 		}
+	}
+	this.frame_80 = function() {
+		this.lastFrame = 80;
 	}
 	this.frame_108 = function() {
 		if(isOnestep) {
 			this.stop();
 			this.lastFrame = 80;
 		}
+	}
+	this.frame_109 = function() {
+		this.lastFrame = 109;
 	}
 	this.frame_128 = function() {
 		if(isOnestep) {
@@ -969,12 +981,12 @@ if (reversed == null) { reversed = false; }
 			this.lastFrame = 1060;
 		}
 	}
-	this.frame_1184 = function() {
+	this.frame_1199 = function() {
 		this.stop();
 		this.lastFrame = 1110;
 	}
 	// actions tween:
-	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(18).call(this.frame_18).wait(20).call(this.frame_38).wait(41).call(this.frame_79).wait(29).call(this.frame_108).wait(20).call(this.frame_128).wait(41).call(this.frame_169).wait(29).call(this.frame_198).wait(20).call(this.frame_218).wait(41).call(this.frame_259).wait(29).call(this.frame_288).wait(20).call(this.frame_308).wait(46).call(this.frame_354).wait(45).call(this.frame_399).wait(29).call(this.frame_428).wait(46).call(this.frame_474).wait(45).call(this.frame_519).wait(45).call(this.frame_564).wait(29).call(this.frame_593).wait(20).call(this.frame_613).wait(46).call(this.frame_659).wait(50).call(this.frame_709).wait(45).call(this.frame_754).wait(29).call(this.frame_783).wait(20).call(this.frame_803).wait(41).call(this.frame_844).wait(29).call(this.frame_873).wait(20).call(this.frame_893).wait(46).call(this.frame_939).wait(45).call(this.frame_984).wait(29).call(this.frame_1013).wait(46).call(this.frame_1059).wait(50).call(this.frame_1109).wait(75).call(this.frame_1184).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(18).call(this.frame_18).wait(1).call(this.frame_19).wait(19).call(this.frame_38).wait(1).call(this.frame_39).wait(40).call(this.frame_79).wait(1).call(this.frame_80).wait(28).call(this.frame_108).wait(1).call(this.frame_109).wait(19).call(this.frame_128).wait(41).call(this.frame_169).wait(29).call(this.frame_198).wait(20).call(this.frame_218).wait(41).call(this.frame_259).wait(29).call(this.frame_288).wait(20).call(this.frame_308).wait(46).call(this.frame_354).wait(45).call(this.frame_399).wait(29).call(this.frame_428).wait(46).call(this.frame_474).wait(45).call(this.frame_519).wait(45).call(this.frame_564).wait(29).call(this.frame_593).wait(20).call(this.frame_613).wait(46).call(this.frame_659).wait(50).call(this.frame_709).wait(45).call(this.frame_754).wait(29).call(this.frame_783).wait(20).call(this.frame_803).wait(41).call(this.frame_844).wait(29).call(this.frame_873).wait(20).call(this.frame_893).wait(46).call(this.frame_939).wait(45).call(this.frame_984).wait(29).call(this.frame_1013).wait(46).call(this.frame_1059).wait(50).call(this.frame_1109).wait(90).call(this.frame_1199).wait(1));
 	// 最终结果
 	this.instance = new lib.黄色高亮("synched",0);
 	this.instance.setTransform(492.15,165.75,1,1,0,0,0,35.5,8.5);
@@ -982,118 +994,118 @@ if (reversed == null) { reversed = false; }
 	this.instance._off = true;
 	this.instance_1 = new lib.CachedBmp_1();
 	this.instance_1.setTransform(457.05,132.1,0.5,0.5);
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[]}).to({state:[{t:this.instance}]},1164).to({state:[{t:this.instance}]},5).to({state:[{t:this.instance}]},5).to({state:[{t:this.instance}]},5).to({state:[{t:this.instance},{t:this.instance_1}]},5).wait(1));
-	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1164).to({_off:false},0).to({alpha:1},5).to({alpha:0},5).to({alpha:1},5).wait(5).to({startPosition:0},0).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[]}).to({state:[{t:this.instance}]},1179).to({state:[{t:this.instance}]},5).to({state:[{t:this.instance}]},5).to({state:[{t:this.instance}]},5).to({state:[{t:this.instance},{t:this.instance_1}]},5).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1179).to({_off:false},0).to({alpha:1},5).to({alpha:0},5).to({alpha:1},5).wait(5).to({startPosition:0},0).wait(1));
 	// 节点0结果
 	this.instance_2 = new lib._3("synched",0);
 	this.instance_2.setTransform(517.5,166,1,1,0,0,0,10.2,9.6);
 	this.instance_2.alpha = 0;
 	this.instance_2._off = true;
-	this.timeline.addTween(cjs.Tween.get(this.instance_2).wait(1144).to({_off:false},0).to({alpha:1},5).to({alpha:0},5).to({alpha:1},5).wait(26));
+	this.timeline.addTween(cjs.Tween.get(this.instance_2).wait(1144).to({_off:false},0).to({alpha:1},5).to({alpha:0},5).to({alpha:1},5).wait(41));
 	// 节点1结果
 	this.instance_3 = new lib._2("synched",0);
 	this.instance_3.setTransform(434.1,207.9,1,1,0,0,0,10.2,9.6);
 	this.instance_3.alpha = 0;
 	this.instance_3._off = true;
-	this.timeline.addTween(cjs.Tween.get(this.instance_3).wait(694).to({_off:false},0).to({alpha:1},5).to({alpha:0},5).to({alpha:1},5).wait(476));
+	this.timeline.addTween(cjs.Tween.get(this.instance_3).wait(694).to({_off:false},0).to({alpha:1},5).to({alpha:0},5).to({alpha:1},5).wait(491));
 	// 节点1
 	this.instance_4 = new lib.节点1("synched",0);
 	this.instance_4.setTransform(429.5,220.25,1,1,0,0,0,45.1,25.7);
 	this.instance_4.alpha = 0;
 	this.instance_4._off = true;
-	this.timeline.addTween(cjs.Tween.get(this.instance_4).wait(69).to({_off:false},0).to({alpha:1},10).wait(1106));
+	this.timeline.addTween(cjs.Tween.get(this.instance_4).wait(69).to({_off:false},0).to({alpha:1},10).wait(1121));
 	// 节点2结果
 	this.instance_5 = new lib._1("synched",0);
 	this.instance_5.setTransform(381.9,260.05,1,1,0,0,0,10.2,9.6);
 	this.instance_5.alpha = 0;
 	this.instance_5._off = true;
-	this.timeline.addTween(cjs.Tween.get(this.instance_5).wait(504).to({_off:false},0).to({alpha:1},5).to({alpha:0},5).to({alpha:1},5).wait(666));
+	this.timeline.addTween(cjs.Tween.get(this.instance_5).wait(504).to({_off:false},0).to({alpha:1},5).to({alpha:0},5).to({alpha:1},5).wait(681));
 	// 节点2
 	this.instance_6 = new lib.节点2("synched",0);
 	this.instance_6.setTransform(381.05,267.1,1,1,0,0,0,39.1,27.6);
 	this.instance_6.alpha = 0;
 	this.instance_6._off = true;
-	this.timeline.addTween(cjs.Tween.get(this.instance_6).wait(159).to({_off:false},0).to({alpha:1},10).wait(1016));
+	this.timeline.addTween(cjs.Tween.get(this.instance_6).wait(159).to({_off:false},0).to({alpha:1},10).wait(1031));
 	// 节点3结果
 	this.instance_7 = new lib._1("synched",0);
 	this.instance_7.setTransform(360.8,359.8,1,1,0,0,0,10.2,9.6);
 	this.instance_7.alpha = 0;
 	this.instance_7._off = true;
-	this.timeline.addTween(cjs.Tween.get(this.instance_7).wait(339).to({_off:false},0).to({alpha:1},5).to({alpha:0},5).to({alpha:1},5).wait(831));
+	this.timeline.addTween(cjs.Tween.get(this.instance_7).wait(339).to({_off:false},0).to({alpha:1},5).to({alpha:0},5).to({alpha:1},5).wait(846));
 	// 节点3
 	this.instance_8 = new lib.节点3("synched",0);
 	this.instance_8.setTransform(336.8,337.2,1,1,0,0,0,26.6,21.8);
 	this.instance_8.alpha = 0;
 	this.instance_8._off = true;
-	this.timeline.addTween(cjs.Tween.get(this.instance_8).wait(249).to({_off:false},0).to({alpha:1},10).wait(926));
+	this.timeline.addTween(cjs.Tween.get(this.instance_8).wait(249).to({_off:false},0).to({alpha:1},10).wait(941));
 	// 节点4结果
 	this.instance_9 = new lib._0("synched",0);
 	this.instance_9.setTransform(438.8,360,1,1,0,0,0,10.2,9.6);
 	this.instance_9.alpha = 0;
 	this.instance_9._off = true;
-	this.timeline.addTween(cjs.Tween.get(this.instance_9).wait(459).to({_off:false},0).to({alpha:1},5).to({alpha:0},5).to({alpha:1},5).wait(711));
+	this.timeline.addTween(cjs.Tween.get(this.instance_9).wait(459).to({_off:false},0).to({alpha:1},5).to({alpha:0},5).to({alpha:1},5).wait(726));
 	// 节点4
 	this.instance_10 = new lib.节点4("synched",0);
 	this.instance_10.setTransform(416.2,330.4,1,1,0,0,0,28.9,15);
 	this.instance_10.alpha = 0;
 	this.instance_10._off = true;
-	this.timeline.addTween(cjs.Tween.get(this.instance_10).wait(389).to({_off:false},0).to({alpha:1},10).wait(786));
+	this.timeline.addTween(cjs.Tween.get(this.instance_10).wait(389).to({_off:false},0).to({alpha:1},10).wait(801));
 	// 节点5结果
 	this.instance_11 = new lib._1("synched",0);
 	this.instance_11.setTransform(483.75,305.45,1,1,0,0,0,10.2,9.6);
 	this.instance_11.alpha = 0;
 	this.instance_11._off = true;
-	this.timeline.addTween(cjs.Tween.get(this.instance_11).wait(644).to({_off:false},0).to({alpha:1},5).to({alpha:0},5).to({alpha:1},5).wait(526));
+	this.timeline.addTween(cjs.Tween.get(this.instance_11).wait(644).to({_off:false},0).to({alpha:1},5).to({alpha:0},5).to({alpha:1},5).wait(541));
 	// 节点5
 	this.instance_12 = new lib.节点5("synched",0);
 	this.instance_12.setTransform(451.8,273.85,1,1,0,0,0,19.7,13.1);
 	this.instance_12.alpha = 0;
 	this.instance_12._off = true;
-	this.timeline.addTween(cjs.Tween.get(this.instance_12).wait(554).to({_off:false},0).to({alpha:1},10).wait(621));
+	this.timeline.addTween(cjs.Tween.get(this.instance_12).wait(554).to({_off:false},0).to({alpha:1},10).wait(636));
 	// 节点6结果
 	this.instance_13 = new lib._1("synched",0);
 	this.instance_13.setTransform(608,208.9,1,1,0,0,0,10.2,9.6);
 	this.instance_13.alpha = 0;
 	this.instance_13._off = true;
-	this.timeline.addTween(cjs.Tween.get(this.instance_13).wait(1094).to({_off:false},0).to({alpha:1},5).to({alpha:0},5).to({alpha:1},5).wait(76));
+	this.timeline.addTween(cjs.Tween.get(this.instance_13).wait(1094).to({_off:false},0).to({alpha:1},5).to({alpha:0},5).to({alpha:1},5).wait(91));
 	// 节点6
 	this.instance_14 = new lib.节点6("synched",0);
 	this.instance_14.setTransform(550.2,222.55,1,1,0,0,0,19.7,13.1);
 	this.instance_14.alpha = 0;
 	this.instance_14._off = true;
-	this.timeline.addTween(cjs.Tween.get(this.instance_14).wait(744).to({_off:false},0).to({alpha:1},10).wait(431));
+	this.timeline.addTween(cjs.Tween.get(this.instance_14).wait(744).to({_off:false},0).to({alpha:1},10).wait(446));
 	// 节点7结果
 	this.instance_15 = new lib._1("synched",0);
 	this.instance_15.setTransform(559.75,305.4,1,1,0,0,0,10.2,9.6);
 	this.instance_15.alpha = 0;
 	this.instance_15._off = true;
-	this.timeline.addTween(cjs.Tween.get(this.instance_15).wait(924).to({_off:false},0).to({alpha:1},5).to({alpha:0},5).to({alpha:1},5).wait(246));
+	this.timeline.addTween(cjs.Tween.get(this.instance_15).wait(924).to({_off:false},0).to({alpha:1},5).to({alpha:0},5).to({alpha:1},5).wait(261));
 	// 节点7
 	this.instance_16 = new lib.节点7("synched",0);
 	this.instance_16.setTransform(512.7,269,1,1,0,0,0,17,8.5);
 	this.instance_16.alpha = 0;
 	this.instance_16._off = true;
-	this.timeline.addTween(cjs.Tween.get(this.instance_16).wait(834).to({_off:false},0).to({alpha:1},10).wait(341));
+	this.timeline.addTween(cjs.Tween.get(this.instance_16).wait(834).to({_off:false},0).to({alpha:1},10).wait(356));
 	// 节点8结果
 	this.instance_17 = new lib._0("synched",0);
 	this.instance_17.setTransform(630.05,305.4,1,1,0,0,0,10.2,9.6);
 	this.instance_17.alpha = 0;
 	this.instance_17._off = true;
-	this.timeline.addTween(cjs.Tween.get(this.instance_17).wait(1044).to({_off:false},0).to({alpha:1},5).to({alpha:0},5).to({alpha:1},5).wait(126));
+	this.timeline.addTween(cjs.Tween.get(this.instance_17).wait(1044).to({_off:false},0).to({alpha:1},5).to({alpha:0},5).to({alpha:1},5).wait(141));
 	// 节点8
 	this.instance_18 = new lib.节点8("synched",0);
 	this.instance_18.setTransform(598.75,277.45,1,1,0,0,0,33.6,16.4);
 	this.instance_18.alpha = 0;
 	this.instance_18._off = true;
-	this.timeline.addTween(cjs.Tween.get(this.instance_18).wait(974).to({_off:false},0).to({alpha:1},10).wait(201));
+	this.timeline.addTween(cjs.Tween.get(this.instance_18).wait(974).to({_off:false},0).to({alpha:1},10).wait(216));
 	// 指示框
 	this.instance_19 = new lib.指示框("synched",0);
 	this.instance_19.setTransform(162.95,187.55,0.8948,0.8971,0,0,0,164,9.7);
-	this.timeline.addTween(cjs.Tween.get(this.instance_19).to({y:204.45},9).wait(10).to({startPosition:0},0).to({y:239.4},10).wait(10).to({startPosition:0},0).to({y:290.9},10).wait(5).to({startPosition:0},0).to({alpha:0},5).to({alpha:1},5).wait(5).to({startPosition:0},0).wait(20).to({y:188},0).to({y:205.5},10).wait(10).to({startPosition:0},0).to({y:240.5},10).wait(10).to({startPosition:0},0).to({y:292.3},10).wait(5).to({startPosition:0},0).to({alpha:0},5).to({alpha:1},5).wait(5).to({startPosition:0},0).wait(20).to({y:188},0).to({y:205.5},10).wait(10).to({startPosition:0},0).to({y:240.5},10).wait(10).to({startPosition:0},0).to({y:292.3},10).wait(5).to({startPosition:0},0).to({alpha:0},5).to({alpha:1},5).wait(25).to({y:188},0).to({y:205.5},10).wait(10).to({startPosition:0},0).to({y:240.5},10).wait(10).to({startPosition:0},0).to({y:258},10).wait(5).to({startPosition:0},0).to({alpha:0},5).to({alpha:1},5).wait(5).to({startPosition:0},0).wait(20).to({startPosition:0},0).wait(10).to({y:290.9},0).wait(5).to({startPosition:0},0).to({alpha:0},5).to({alpha:1},5).wait(5).to({startPosition:0},0).wait(20).to({y:188},0).to({y:205.5},10).wait(10).to({startPosition:0},0).to({y:223.35},10).wait(5).to({startPosition:0},0).to({alpha:0},5).to({alpha:1},5).wait(5).to({startPosition:0},0).wait(25).to({y:291.35},0).wait(5).to({startPosition:0},0).to({alpha:0},5).to({alpha:1},5).wait(35).to({startPosition:0},0).wait(5).to({startPosition:0},0).to({alpha:0},5).to({alpha:1},5).wait(5).to({startPosition:0},0).wait(20).to({y:188},0).to({y:205.5},10).wait(10).to({startPosition:0},0).to({y:240.5},10).wait(10).to({startPosition:0},0).to({y:258},10).wait(5).to({startPosition:0},0).to({alpha:0},5).to({alpha:1},5).wait(35).to({y:291.15},0).wait(5).to({startPosition:0},0).to({alpha:0},5).to({alpha:1},5).wait(35).to({startPosition:0},0).wait(5).to({startPosition:0},0).to({alpha:0},5).to({alpha:1},5).wait(25).to({y:188},0).to({y:205.5},10).wait(10).to({startPosition:0},0).to({y:240.5},10).wait(10).to({startPosition:0},0).to({y:292.3},10).wait(5).to({startPosition:0},0).to({alpha:0},5).to({alpha:1},5).wait(25).to({y:188},0).to({y:205.5},10).wait(10).to({startPosition:0},0).to({y:240.5},10).wait(10).to({startPosition:0},0).to({y:258},10).wait(5).to({startPosition:0},0).to({alpha:0},5).to({alpha:1},5).wait(35).to({y:292.5},0).wait(5).to({y:292.3},0).to({alpha:0},5).to({alpha:1},5).wait(25).to({y:188},0).to({y:205.5},10).wait(10).to({startPosition:0},0).to({y:223.35},10).wait(5).to({startPosition:0},0).to({alpha:0},5).to({alpha:1},5).wait(35).to({y:291.75},0).wait(5).to({startPosition:0},0).to({alpha:0},5).to({alpha:1},5).wait(35).to({startPosition:0},0).wait(5).to({startPosition:0},0).to({alpha:0},5).to({alpha:1},5).wait(46));
+	this.timeline.addTween(cjs.Tween.get(this.instance_19).wait(1).to({startPosition:0},0).to({y:204.45},8).wait(10).to({startPosition:0},0).to({y:238.6},10).wait(10).to({y:239.4},0).to({y:289.7},10).wait(5).to({y:290.1},0).to({alpha:0},5).to({alpha:1},5).wait(5).to({startPosition:0},0).wait(20).to({y:188},0).to({y:204.7},10).wait(10).to({startPosition:0},0).to({y:239.3},10).wait(10).to({startPosition:0},0).to({y:289.9},10).wait(5).to({startPosition:0},0).to({alpha:0},5).to({alpha:1},5).wait(5).to({startPosition:0},0).wait(20).to({y:188},0).to({y:204.7},10).wait(10).to({y:205.1},0).to({y:239.3},10).wait(10).to({startPosition:0},0).to({y:289.9},10).wait(5).to({startPosition:0},0).to({alpha:0},5).to({alpha:1},5).wait(25).to({y:188},0).to({y:205.1},10).wait(10).to({startPosition:0},0).to({y:239.7},10).wait(10).to({startPosition:0},0).to({y:256.8},10).wait(5).to({startPosition:0},0).to({alpha:0},5).to({alpha:1},5).wait(5).to({startPosition:0},0).wait(20).to({startPosition:0},0).wait(10).to({y:290.1},0).wait(5).to({startPosition:0},0).to({alpha:0},5).to({alpha:1},5).wait(5).to({startPosition:0},0).wait(20).to({y:188},0).to({y:205.1},10).wait(10).to({startPosition:0},0).to({y:222.55},10).wait(5).to({startPosition:0},0).to({alpha:0},5).to({alpha:1},5).wait(5).to({startPosition:0},0).wait(25).to({y:290.55},0).wait(5).to({startPosition:0},0).to({alpha:0},5).to({alpha:1},5).wait(35).to({y:290.15},0).wait(5).to({startPosition:0},0).to({alpha:0},5).to({alpha:1},5).wait(5).to({startPosition:0},0).wait(20).to({y:188},0).to({y:205.1},10).wait(10).to({startPosition:0},0).to({y:239.3},10).wait(10).to({startPosition:0},0).to({y:255.8},10).wait(5).to({startPosition:0},0).to({alpha:0},5).to({alpha:1},5).wait(35).to({y:289.95},0).wait(5).to({startPosition:0},0).to({alpha:0},5).to({alpha:1},5).wait(35).to({startPosition:0},0).wait(5).to({startPosition:0},0).to({alpha:0},5).to({alpha:1},5).wait(25).to({y:188},0).to({y:205.1},10).wait(10).to({startPosition:0},0).to({y:239.3},10).wait(10).to({startPosition:0},0).to({y:290.3},10).wait(5).to({startPosition:0},0).to({alpha:0},5).to({alpha:1},5).wait(25).to({y:188},0).to({y:205.1},10).wait(10).to({startPosition:0},0).to({y:239.3},10).wait(10).to({startPosition:0},0).to({y:255.8},10).wait(5).to({startPosition:0},0).to({alpha:0},5).to({alpha:1},5).wait(35).to({y:290.1},0).wait(5).to({y:289.9},0).to({alpha:0},5).to({alpha:1},5).wait(25).to({y:188},0).to({y:204.7},10).wait(10).to({startPosition:0},0).to({y:222.05},10).wait(5).to({startPosition:0},0).to({alpha:0},5).to({alpha:1},5).wait(35).to({y:290.15},0).wait(5).to({startPosition:0},0).to({alpha:0},5).to({alpha:1},5).wait(35).to({y:290.55},0).wait(5).to({startPosition:0},0).to({alpha:0},5).to({alpha:1},5).wait(25).to({startPosition:0},0).to({y:324.15},10).wait(26));
 	// 按钮
 	this.btnback = new lib.回退();
 	this.btnback.name = "btnback";
-	this.btnback.setTransform(171.35,414,0.8333,0.8329);
+	this.btnback.setTransform(230.25,414,0.8333,0.8329);
 	new cjs.ButtonHelper(this.btnback, 0, 1, 2);
 	this.btnreplay = new lib.replay();
 	this.btnreplay.name = "btnreplay";
@@ -1101,7 +1113,7 @@ if (reversed == null) { reversed = false; }
 	new cjs.ButtonHelper(this.btnreplay, 0, 1, 2);
 	this.btnstop = new lib.pause();
 	this.btnstop.name = "btnstop";
-	this.btnstop.setTransform(229.35,414,0.8333,0.8329);
+	this.btnstop.setTransform(113,414,0.8333,0.8329);
 	new cjs.ButtonHelper(this.btnstop, 0, 1, 2);
 	this.btnplay = new lib.play();
 	this.btnplay.name = "btnplay";
@@ -1109,9 +1121,9 @@ if (reversed == null) { reversed = false; }
 	new cjs.ButtonHelper(this.btnplay, 0, 1, 2);
 	this.btnonestep = new lib.onestep();
 	this.btnonestep.name = "btnonestep";
-	this.btnonestep.setTransform(113.1,414.1,0.8334,0.8333,0,0,0,0.1,0.1);
+	this.btnonestep.setTransform(172,414.1,0.8334,0.8333,0,0,0,0.1,0.1);
 	new cjs.ButtonHelper(this.btnonestep, 0, 1, 2);
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.btnonestep},{t:this.btnplay},{t:this.btnstop},{t:this.btnreplay},{t:this.btnback}]}).wait(1185));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.btnonestep},{t:this.btnplay},{t:this.btnstop},{t:this.btnreplay},{t:this.btnback}]}).wait(1200));
 	// 背景
 	this.instance_20 = new lib.节点0("synched",0);
 	this.instance_20.setTransform(483.65,178.05,1,1,0,0,0,26.6,21.8);
@@ -1123,7 +1135,7 @@ if (reversed == null) { reversed = false; }
 	this.instance_23.setTransform(198.65,118.35,1,1,0,0,0,163,34);
 	this.instance_24 = new lib.CachedBmp_2();
 	this.instance_24.setTransform(181.45,26.35,0.5,0.5);
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_24},{t:this.instance_23},{t:this.instance_22},{t:this.instance_21},{t:this.instance_20}]}).wait(1185));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_24},{t:this.instance_23},{t:this.instance_22},{t:this.instance_21},{t:this.instance_20}]}).wait(1200));
 	this._renderFirstFrame();
 }).prototype = p = new lib.AnMovieClip();
 p.nominalBounds = new cjs.Rectangle(335.2,266.4,305.2,193);
@@ -1136,7 +1148,7 @@ lib.properties = {
 	color: "#FFFFFF",
 	opacity: 1.00,
 	manifest: [
-		{src:"images/斐波那契数列_atlas_1.png?1744948186502", id:"斐波那契数列_atlas_1"}
+		{src:"images/斐波那契数列_atlas_1.png?1749364878982", id:"斐波那契数列_atlas_1"}
 	],
 	preloads: []
 };
